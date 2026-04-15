@@ -120,6 +120,7 @@ export default function BuyCreditPage() {
                 placeholder="Paste your transaction number"
                 value={proof}
                 onChange={(e) => setProof(e.target.value)}
+                required
                 className="p-2.5 sm:p-3 rounded-sm bg-[#0c0905] border border-[#b8922a]/20 text-[#f5efe4] focus:ring-1 focus:ring-[#b8922a]/50 focus:outline-none text-sm sm:text-base"
               />
 

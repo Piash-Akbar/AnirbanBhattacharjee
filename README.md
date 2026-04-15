@@ -77,15 +77,24 @@ This creates all 8 tables, RPC functions for atomic operations, Row Level Securi
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project (or use an existing one)
-3. Go to **APIs & Services > Credentials**
-4. Click **Create Credentials > OAuth 2.0 Client ID**
-5. Application type: **Web application**
-6. Add to **Authorized JavaScript origins**:
+3. Go to **APIs & Services > OAuth consent screen**
+   - **App name**: set this to your brand (e.g., `Anirban's Class`) — this is what students see on the Google sign-in screen (*"to continue to Anirban's Class"* instead of the raw `xxxxx.supabase.co` host)
+   - User support email, app logo, developer contact
+   - Authorized domain: `supabase.co` (or your custom domain if you have one)
+   - Save
+4. Go to **APIs & Services > Credentials**
+5. Click **Create Credentials > OAuth 2.0 Client ID**
+6. Application type: **Web application**
+7. Add to **Authorized JavaScript origins**:
    - `http://localhost:3000` (for local dev)
    - `https://your-app.vercel.app` (for production)
-7. Add to **Authorized redirect URIs**:
+8. Add to **Authorized redirect URIs**:
    - `https://<YOUR_SUPABASE_PROJECT_ID>.supabase.co/auth/v1/callback`
-8. Click **Create** and note down the **Client ID** and **Client Secret**
+9. Click **Create** and note down the **Client ID** and **Client Secret**
+
+> **Note on branding:** If Supabase is still using its own shared Google OAuth client, the consent screen will show Supabase's project host. Your custom app name only appears once you plug your own Client ID/Secret into Supabase (step 4b). For a fully branded URL on the consent screen (e.g., `auth.anirbansclass.com` instead of `xxxxx.supabase.co`), set up a Supabase custom domain (paid Pro feature) and update the redirect URI accordingly.
+>
+> Apps requesting only basic `email`/`profile` scopes work unverified but show a warning to external users. Google verification is required for >100 users or sensitive scopes — allow several days.
 
 #### 4b. Enable Google Provider in Supabase
 

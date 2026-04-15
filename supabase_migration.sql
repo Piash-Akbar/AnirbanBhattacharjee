@@ -40,7 +40,8 @@ CREATE TABLE "creditRequests" (
   message TEXT,
   status TEXT DEFAULT 'pending',
   "createdAt" TIMESTAMPTZ DEFAULT now(),
-  "approvedAt" TIMESTAMPTZ
+  "approvedAt" TIMESTAMPTZ,
+  "declinedAt" TIMESTAMPTZ
 );
 
 CREATE TABLE notices (
